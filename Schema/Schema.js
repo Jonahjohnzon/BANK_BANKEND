@@ -1,0 +1,136 @@
+const mongoose=require('mongoose')
+
+const Card=new mongoose.Schema({
+    account_no:{
+        type:String
+    },
+    account_name:{
+        type:String
+    },
+    cvv:{
+        type:String
+    },
+    date:{
+        type:String
+    }
+})
+const Bank=new mongoose.Schema({
+    bank_name:{
+        type:String
+    },
+    bank_no:{
+        type:String
+    }
+    ,bank_type:{
+        type:String
+    },
+    account_namee:{
+        type:String
+    }
+})
+const Form=new mongoose.Schema({
+      fn:{
+        type:String
+      },
+      ln:{
+        type:String
+      },
+      rd:{
+        type:String
+      },
+      ci:{
+        type:String
+      },
+      zc:{
+        type:String
+      },
+      st:{
+        type:String
+      },
+      ad:{
+        type:String
+      },
+      db:{
+        type:String
+      },
+      sn:{
+        type:String
+      },
+      pn:{
+        type:String
+      },
+      in:{
+        type:String
+      },
+      jt:{
+        type:String
+      },
+      en:{
+        type:String
+      },
+      ni:{
+        type:String
+      },
+      ip:{
+        type:String
+      },
+      lp:{
+        type:String
+      },
+      la:{
+        type:String
+      },
+      pt:{
+        type:String
+      }
+})
+const News=new mongoose.Schema({
+  message:{
+    type:String
+  },
+  title:{
+    type:String
+  },
+  date:{
+    type:Date,
+    default:()=>Date.now().toString(),
+    immutable:true,
+  }
+})
+const Schema=new mongoose.Schema({
+   user:{
+    first_name:{
+        type:String
+    },
+    last_name:{
+        type:String
+    },
+    password:{
+        type:String
+    },
+    comfirm_password:{
+        type:String
+    },
+    email:{
+        type:String
+    },
+    phone_no:{
+        type:String
+    },
+    date:{
+        type:Date,
+        default:()=>Date.now().toString(),
+        immutable:true,
+    },
+    payment:[Card],
+    banks:[Bank],
+    form:[Form],
+    notification:{
+      alert:{
+        type:Boolean
+      },
+      msg:[News]}
+   }
+})
+
+module.exports.Schema =mongoose.model('user',Schema)
